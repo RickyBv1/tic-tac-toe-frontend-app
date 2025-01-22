@@ -1,0 +1,58 @@
+@use './../../../../public/colors.scss';
+
+$borders: 1px solid colors.$accent-2;
+
+section {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1rem;
+}
+
+button {
+    aspect-ratio: 1;
+    width: 100%;
+    border: unset;
+    background-color: unset;
+    font-size: 300%;
+    &:not(:disabled){
+        cursor: pointer;
+    }
+    &:nth-of-type(2), &:nth-of-type(8) {
+        border-left: $borders;
+        border-right: $borders;
+    }
+    &:nth-of-type(4), &:nth-of-type(6) {
+        border-top: $borders;
+        border-bottom: $borders;
+    }
+    &:nth-of-type(5) {
+        border: $borders;
+    }
+}
+
+.local {
+    color: colors.$heart-underline;
+}
+
+.winner {
+    display: inline-block;
+    animation: winner 2s infinite;
+}
+
+@keyframes winner {
+    0% {
+        scale: 1;
+    }
+    25% {
+        scale: 1.25;
+        rotate: 25deg;
+    }
+    50% {
+        scale: 1;
+    }
+    75% {
+        scale: 1.25;
+        rotate: -25deg;
+    }
+}

@@ -1,0 +1,24 @@
+<section class="flex-apart">    
+    <div class="player-container">
+        <span class="heart-container">
+            @for(life of lifeP1(); track $index) {💖}
+        </span>
+        <span class="player-mark" [ngClass]="{active: lobbyService.status() === 'P1_TURN'}">X</span>
+        <p class="italic">{{lobbyService.player1().name}}</p>
+    </div>
+    <div class="player-container">
+        <span class="player-mark" [ngClass]="{active: lobbyService.status() === 'P2_TURN'}">O</span>
+        @if(!lobbyService.player2().name) {
+            💖💖💖
+        } @else {
+            <span class="heart-container">
+                @for(life of lifeP2(); track $index) {💖}
+            </span>
+        }
+        <p class="italic">{{lobbyService.player2().name || 'Waiting...'}}</p>
+    </div>
+</section>
+
+@if (lobbyService.status() === 'P1_TURN' || lobbyService.status() === 'P2_TURN') {
+    <p class="turn">{{lobbyService.status() === 'P1_TURN' ? lobbyService.player1().name : lobbyService.player2().name}} turn's</p>
+}

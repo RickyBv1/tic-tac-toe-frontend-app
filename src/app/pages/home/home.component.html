@@ -1,0 +1,10 @@
+<section class="flex-column">
+    <h1 class="italic animated-border">TIC-TAC-TOE <span>ONLINE</span></h1>    
+    <p>Hello, <span>{{userService.name()}}</span>!</p>
+    
+    <div class="flex-column">
+        <button (click)="searchPublicLobby()" class="button">Play Online</button>
+        <a [routerLink]="['/play-private']" class="button">Create Private Lobby</a>
+        <a [routerLink]="['/change-username']" class="button">Change username</a>
+    </div>
+</section>

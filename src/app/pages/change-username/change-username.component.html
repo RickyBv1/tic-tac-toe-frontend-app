@@ -1,0 +1,8 @@
+<section class="flex-column">
+    <form (ngSubmit)="changeNameAndComeBack(name.value)" #form="ngForm" class="flex-column">
+        <label for="name" class="italic">Type your name</label>
+        <input type="text" id="name" name="name" [placeholder]="userService.name()" #name required maxlength="15" ngModel>
+        <button [disabled]="form.invalid" class="button">Change username</button>
+        <a [routerLink]="['/']" class="button">To home screen</a>
+    </form>
+</section>

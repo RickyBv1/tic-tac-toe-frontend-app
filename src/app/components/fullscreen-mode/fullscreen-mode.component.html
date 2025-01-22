@@ -1,0 +1,14 @@
+@if(show()){
+    <div id="background" @fadeInOut></div>
+    <div id="container" @animateChildren>
+        <div @inOutAnimation>
+            <ng-content select="[primary]"></ng-content>
+        </div>
+        <div @inOutAnimation2>
+            <ng-content select="[secondary]"></ng-content>
+        </div>
+        <div inOutAnimation3 id="foot">
+            <ng-content select="[foot]"></ng-content>
+        </div>
+    </div>
+}

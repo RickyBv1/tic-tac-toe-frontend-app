@@ -1,0 +1,93 @@
+@use "./../../../../public/colors.scss";
+
+#container {
+    pointer-events: none;
+    justify-content: space-between;
+    padding: 50px 0;
+}
+
+#dpad-container {
+    $dpad-size: 100px;
+    $padding: 4px;
+    position: relative;
+    border: 2px solid colors.$accent-1-contrast;
+    width: $dpad-size;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: $padding;
+    >div {
+        $cross-size: 20px;
+        position: absolute;
+        width: $cross-size;
+        height: $dpad-size;
+        background-color: colors.$primary;
+        left: calc($dpad-size / 2 - $cross-size / 2 + $padding);
+        &:last-child {
+            rotate: 90deg;
+        }
+    }
+}
+
+#a-b-container {
+    translate: 0 40px;
+}
+
+#a-b-border-container {
+    border: 2px solid colors.$accent-1-contrast;
+    border-radius: 2rem;
+    padding: 5px;
+    rotate: -45deg;
+    width: 110px;
+}
+
+.round-button {
+    width: 36px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: colors.$accent-2;
+    display: flex;
+    justify-content: center;
+    span {
+        translate: 0 40px;
+    }
+}
+
+#buttons-start-container {
+    margin: auto;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    div {
+        translate: 0 40px;
+        margin: 0;
+    }
+}
+
+.elongated-button {
+    width: 80px;
+    height: 10px;
+    margin: 10px;
+    rotate: -35deg;
+    border-radius: 2rem;
+    border: 2px solid colors.$primary;
+    background-color: colors.$accent-2;
+    display: flex;
+    justify-content: center;
+    span {
+        translate: 0 14px;
+        font-size: smaller;
+        font-weight: bold;
+    }
+}
+
+#speaker-container {
+    width: 80px;
+    rotate: 45deg;
+    margin-left: auto;
+    div {
+        margin: 8px;
+        aspect-ratio: 9;
+        border-radius: 2rem;
+        border: 2px solid colors.$primary;
+    }
+}

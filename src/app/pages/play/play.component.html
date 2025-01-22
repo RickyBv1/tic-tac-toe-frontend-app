@@ -1,0 +1,60 @@
+<div id="container">
+    <app-game-details/>
+    <app-board/>
+</div>
+
+<app-fullscreen-mode [show] ="this.showMode()">
+    @switch (pastStatus()) {
+        @case ('WAITING_PARTNER') {
+            <h2 primary>Waiting for a partner...</h2>
+        }
+        @case ('P1_VICTORY') {
+            <h2 primary>{{lobbyService.player1().name}} WIN THIS ROUND</h2>
+        }
+        @case ('P2_VICTORY') {
+            <h2 primary>{{lobbyService.player2().name}} WIN THIS ROUND</h2>
+        }
+        @case ('P1_GRAND_VICTORY') {
+            <h2 primary>{{lobbyService.player1().name}} WIN!!!</h2>
+        }
+        @case ('P2_GRAND_VICTORY') {
+            <h2 primary>{{lobbyService.player2().name}} WIN!!!</h2>
+        }
+        @case ('ABANDONED') {
+            <h2 primary>The other player has abandoned the room</h2>
+        }
+    }
+    @switch (pastStatus()) {
+        @case ('WAITING_PARTNER') {
+            <img secondary src="img/3-dots-scale-middle.svg">
+        }
+        @case ('P1_VICTORY') {
+            <button secondary (click)="nextGame()" class="button">Next Round</button>
+        }
+        @case ('P2_VICTORY') {
+            <button secondary (click)="nextGame()" class="button">Next Round</button>
+        }
+        @case ('P1_GRAND_VICTORY') {
+            <button secondary (click)="nextGame()" class="button">New Game</button>
+        }
+        @case ('P2_GRAND_VICTORY') {
+            <button secondary (click)="nextGame()" class="button">New Game</button>
+        }
+        @case ('ABANDONED') {
+            <a [routerLink]="['/']" secondary class="button">Back to Home</a>
+        }
+    }
+    @if(!lobbyService.public() && this.pastStatus() === 'WAITING_PARTNER'){
+        <div foot id="foot">
+            <p>Copy the link to invite a friend
+                <button id="copy-button">
+                    <img (click)="copyLink()" src="img/copy.svg" alt="copy link">
+                </button>
+                @if(copiedLink()){
+                    <span>✓</span>
+                }
+            </p>
+        </div>
+    }
+
+</app-fullscreen-mode>

@@ -1,0 +1,39 @@
+@use "./../../../../public/colors.scss";
+
+section {
+    width: 100%;
+    margin: auto;
+}
+.player-container {
+    &:nth-child(1) {
+    text-align: start;
+    }
+    &:nth-child(2) {
+    text-align: end;
+    }
+}
+
+.heart-container {
+    border-bottom: 1px solid colors.$heart-underline;
+}
+
+.player-mark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin: 0 5px;
+    &:active {
+        background-color: colors.$accent-1;
+        border-radius: 50%;
+    }
+}
+
+p {
+    margin: 0;
+}
+
+.turn {
+    font-size: larger;
+    text-align: center;
+}
