@@ -6,13 +6,14 @@ import { JoinLobbyArgs } from '../interfaces/joinLobby';
 import { LobbyBackend } from '../interfaces/lobby';
 import { LobbyService } from './lobby.service';
 import { Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServerService {
 
-  server = io('localhost:3000',{autoConnect: false});
+  server = io(environment.SERVER_URL,{autoConnect: false});
   userService = inject(UserService);
 
   lobbyUpdate$ = new Subject<LobbyBackend>();

@@ -8,6 +8,7 @@ import { LobbyService } from '../../services/lobby.service';
 import { FullscreenModeComponent } from "../../components/fullscreen-mode/fullscreen-mode.component";
 import { GameStatus } from '../../interfaces/lobby';
 import { Location } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-play',
@@ -55,7 +56,7 @@ export class PlayComponent implements OnInit {
   }
 
   copyLink(){
-    navigator.clipboard.writeText('localhost:4200/play/'+this.lobbyService.id());
+    navigator.clipboard.writeText(environment.CLIENT_URL+'/play/'+this.lobbyService.id());
     this.copiedLink.set(true);
     setTimeout(() => this.copiedLink.set(false), 2000);
   }
